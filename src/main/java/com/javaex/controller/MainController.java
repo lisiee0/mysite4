@@ -12,7 +12,7 @@ public class MainController {
 	public String main() {
 		System.out.println("MainController/main()");
 		
-		return "/WEB-INF/views/main/index.jsp";
+		return "/main/index";
 	}
 
 }
