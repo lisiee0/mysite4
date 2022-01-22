@@ -50,9 +50,9 @@ public class UserController {
 	// 로그아웃
 	@RequestMapping("/logout")
 	public String logout(@SessionAttribute("authUser") UserVo vo, 
-						SessionStatus sessionStatus) {
+						SessionStatus sessionStatus) { 
 		System.out.println("UserController/logout()");
-		
+	
 		sessionStatus.setComplete(); // 세션 삭제
 		
 		return "redirect:/";
