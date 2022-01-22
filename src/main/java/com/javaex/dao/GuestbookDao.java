@@ -17,8 +17,7 @@ public class GuestbookDao {
 	
 	// 리스트 불러오기
 	public List<GuestbookVo> getList() {	
-		List<GuestbookVo> gList= sqlSession.selectList("guest.getList");
-		return gList;
+		return sqlSession.selectList("guest.getList");	
 	}
 	
 	// 방명록작성
