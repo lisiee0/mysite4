@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace= "user">
-	
-	<select id= "getUser" parameterType= "UserVo" resultType= "UserVo">
+<mapper namespace="user">
+
+	<select id="getUser" parameterType="UserVo" resultType="UserVo">
 	<![CDATA[
 		select  		no,
 						id,
@@ -17,15 +17,15 @@
 	</select>
 
 
-	<insert id= "userInsert" parameterType="UserVo">
+	<insert id="userInsert" parameterType="UserVo">
 	<![CDATA[
 		insert into  users 
 		values		 (seq_users_no.nextval, #{id}, #{password}, #{name}, #{gender})
 	]]>
 	</insert>
-	
-	
-	<update id= "userUpdate" parameterType="UserVo">
+
+
+	<update id="userUpdate" parameterType="UserVo">
 	<![CDATA[
 		update		users
 		set			password= #{password},
@@ -34,8 +34,8 @@
 		where		no= #{no}
 	]]>
 	</update>
-	
-	
-	
-	
+
+
+
+
 </mapper>
