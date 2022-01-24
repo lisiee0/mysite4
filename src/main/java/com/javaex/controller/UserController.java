@@ -35,7 +35,6 @@ public class UserController {
 		System.out.println("UserController/login()");
 		
 		UserVo authUser= ud.getUser(vo);
-		System.out.println(authUser);
 		
 		if(authUser==null) { // 로그인 실패
 			return "redirect:/user/loginForm?result=fail";
@@ -46,6 +45,23 @@ public class UserController {
 		}
 	}
 	
+	/*
+	// 로그인
+	@RequestMapping("/login")
+	public String login(@ModelAttribute UserVo vo, HttpSession session) {
+		System.out.println("UserController/login()");
+		
+		UserVo authUser= ud.getUser(vo);
+		
+		if(authUser==null) { // 로그인 실패
+			return "redirect:/user/loginForm?result=fail";
+		}
+		else { // 로그인 성공
+			session.setAttribute("authUser", authUser);
+			return "redirect:/";
+		}
+	}
+	*/
 	
 	// 로그아웃
 	@RequestMapping("/logout")
