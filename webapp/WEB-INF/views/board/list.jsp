@@ -40,12 +40,13 @@
 	
 				<div id="board">
 					<div id="list">
-						<form action="" method="">
+						<form action="" method="get">
 							<div class="form-group text-right">
 								<input type="text">
 								<button type="submit" id=btn_search>검색</button>
 							</div>
 						</form>
+						
 						<table >
 							<thead>
 								<tr>
@@ -58,46 +59,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr>
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
-								<tr class="last">
-									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-									<td>정우성</td>
-									<td>1232</td>
-									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
-								</tr>
+								<c:forEach items="${bList}" var="vo">
+									<tr>
+										<td>${vo.no}</td>
+										<td class="text-left"><a href="${pageContext.request.contextPath}/board/read?no=${vo.no}">${vo.title}</a></td>
+										<td>${vo.userName}</td>
+										<td>${vo.hit}</td>
+										<td>${vo.regDate}</td>
+										<c:if test="${authUser.no eq vo.userNo}">
+											<td><a href="${pageContext.request.contextPath}/board/delete?no=${vo.no}">[삭제]</a></td>
+										</c:if>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 			
@@ -120,8 +93,9 @@
 							
 							<div class="clear"></div>
 						</div>
-						<a id="btn_write" href="">글쓰기</a>
-					
+						<c:if test="${authUser ne null}">
+							<a id="btn_write" href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
+						</c:if>
 					</div>
 					<!-- //list -->
 				</div>

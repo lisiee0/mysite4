@@ -4,35 +4,35 @@
 <mapper namespace="user">
 
 	<select id="getUser" parameterType="UserVo" resultType="UserVo">
-	<![CDATA[
-		select  		no,
-						id,
-						password,
-        				name,
-        				gender
-		from   			users
-		where id= 		#{id}
-		and password= 	#{password}
-	]]>
+		<![CDATA[
+			select  		no,
+							id,
+							password,
+	        				name,
+	        				gender
+			from   			users
+			where id= 		#{id}
+			and password= 	#{password}
+		]]>
 	</select>
 
 
 	<insert id="userInsert" parameterType="UserVo">
-	<![CDATA[
-		insert into  users 
-		values		 (seq_users_no.nextval, #{id}, #{password}, #{name}, #{gender})
-	]]>
+		<![CDATA[
+			insert into  users 
+			values		 (seq_users_no.nextval, #{id}, #{password}, #{name}, #{gender})
+		]]>
 	</insert>
 
 
 	<update id="userUpdate" parameterType="UserVo">
-	<![CDATA[
-		update		users
-		set			password= #{password},
- 					name= #{name},
- 					gender= #{gender}
-		where		no= #{no}
-	]]>
+		<![CDATA[
+			update		users
+			set			password= #{password},
+	 					name= #{name},
+	 					gender= #{gender}
+			where		no= #{no}
+		]]>
 	</update>
 
 

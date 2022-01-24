@@ -13,7 +13,13 @@ public class BoardVo {
 	public BoardVo() {
 		
 	}
-
+	
+	public BoardVo(String title, String content, int userNo) {
+		this.title = title;
+		this.content = content;
+		this.userNo = userNo;
+	}
+	
 	public BoardVo(int no, String title, String content) {
 		this.no = no;
 		this.title = title;
