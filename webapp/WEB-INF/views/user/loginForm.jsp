@@ -43,7 +43,7 @@
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
+								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요" autofocus>
 							</div>
 	
 							<!-- 비밀번호 -->
