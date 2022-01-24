@@ -12,8 +12,18 @@ public class UserService {
 	@Autowired
 	private UserDao ud;
 	
-	public void login(UserVo vo) {
-		
+	public UserVo getUser(UserVo vo) {
+		return ud.getUser(vo);
 	}
+	
+	public void join(UserVo vo) {
+		ud.userInsert(vo);
+	}
+	
+	public void modify(UserVo vo) {
+		ud.userUpdate(vo);
+	}
+	
+	
 
 }

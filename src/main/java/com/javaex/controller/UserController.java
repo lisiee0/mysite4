@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.javaex.dao.UserDao;
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
 
@@ -36,7 +35,7 @@ public class UserController {
 	public String login(@ModelAttribute UserVo vo, Model model) {
 		System.out.println("UserController/login()");
 		
-		UserVo authUser= ud.getUser(vo);
+		UserVo authUser= userService.getUser(vo);
 		
 		if(authUser==null) { // 로그인 실패
 			return "redirect:/user/loginForm?result=fail";
@@ -105,7 +104,8 @@ public class UserController {
 	@RequestMapping("/join")
 	public String join(@ModelAttribute UserVo vo) {
 		System.out.println("UserController/join");
-		ud.userInsert(vo);
+		
+		userService.join(vo);
 		
 		return "/user/joinOk";
 	}
@@ -125,9 +125,9 @@ public class UserController {
 	public String modify(@ModelAttribute UserVo vo, Model model) {
 		System.out.println("UserController/modify");
 
-		ud.userUpdate(vo); 
+		userService.modify(vo); 
 
-		UserVo authUser= ud.getUser(vo); // 수정된 정보의 authUser 재설정
+		UserVo authUser= userService.getUser(vo); // 수정된 정보의 authUser 재설정
 		model.addAttribute("authUser", authUser); // 세션 덮어쓰기
 		
 		return "redirect:/";
