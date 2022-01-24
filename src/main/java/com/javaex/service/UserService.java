@@ -23,7 +23,4 @@ public class UserService {
 	public void modify(UserVo vo) {
 		ud.userUpdate(vo);
 	}
-	
-	
-
 }

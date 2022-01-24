@@ -48,7 +48,7 @@ public class UserController {
 	
 	
 	/*
-	//HttpSession 사용
+	// HttpSession 사용
 	// 로그인
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo vo, HttpSession session) {
@@ -79,6 +79,7 @@ public class UserController {
 	
 	
 	/*
+	// HttpSession 사용
 	// 로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) { 
