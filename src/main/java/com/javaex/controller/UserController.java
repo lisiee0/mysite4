@@ -1,18 +1,19 @@
 package com.javaex.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.javaex.dao.UserDao;
 import com.javaex.vo.UserVo;
 
 @Controller
-// @SessionAttributes("authUser") // 세션설정
+@SessionAttributes("authUser") // 세션설정
 @RequestMapping("/user")
 public class UserController {
 	
@@ -27,7 +28,7 @@ public class UserController {
 		return "/user/loginForm";
 	}
 	
-	/*
+	
 	// Model 사용
 	// 로그인
 	@RequestMapping("/login")
@@ -44,7 +45,9 @@ public class UserController {
 			return "redirect:/";
 		}
 	}
-	*/
+	
+	
+	/*
 	//HttpSession 사용
 	// 로그인
 	@RequestMapping("/login")
@@ -61,8 +64,8 @@ public class UserController {
 			return "redirect:/";
 		}
 	}
+	*/
 	
-	/*
 	// 로그아웃
 	@RequestMapping("/logout")
 	public String logout(@SessionAttribute("authUser") UserVo vo, 
@@ -73,8 +76,9 @@ public class UserController {
 		
 		return "redirect:/";
 	}
-	*/
 	
+	
+	/*
 	// 로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) { 
@@ -85,7 +89,7 @@ public class UserController {
 		
 		return "redirect:/";
 	}
-	
+	*/
 	
 	// 회원가입폼
 	@RequestMapping("/joinForm")
