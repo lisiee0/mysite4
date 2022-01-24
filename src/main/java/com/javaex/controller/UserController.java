@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.javaex.dao.UserDao;
+import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -18,7 +19,7 @@ import com.javaex.vo.UserVo;
 public class UserController {
 	
 	@Autowired
-	private UserDao ud;
+	private UserService userService;
 
 	// 로그인폼
 	@RequestMapping("/loginForm")
