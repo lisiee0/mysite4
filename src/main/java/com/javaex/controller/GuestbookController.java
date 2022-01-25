@@ -60,6 +60,6 @@ public class GuestbookController {
 		else { // 비밀번호 불일치
 			System.out.println("password incorrect");
 		}
-		return "redirect:/guest/addList";	
+		return "redirect:/guest/addList";
 	}
 }
