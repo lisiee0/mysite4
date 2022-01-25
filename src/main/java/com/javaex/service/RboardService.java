@@ -37,4 +37,9 @@ public class RboardService {
 	public void write(RboardVo vo) {
 		rd.write(vo);
 	}
+	
+	public void reply(RboardVo vo) {
+		rd.reply(vo);
+		rd.arrange(vo);
+	}
 }

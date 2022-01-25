@@ -72,7 +72,14 @@
 								</span>
 							</div>
 							
-							<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/modifyForm?no=${post.no}">수정</a>
+							<c:if test="${authUser ne null}">
+								<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/writeForm?groupNo=${post.groupNo}&orderNo=${post.orderNo}&depth=${post.depth}">댓글</a>
+							</c:if>
+							
+							<c:if test="${post.userNo eq authUser.no}">
+								<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/modifyForm?no=${post.no}">수정</a>
+							</c:if>
+							
 							<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/list">목록</a>
 							
 						</form>

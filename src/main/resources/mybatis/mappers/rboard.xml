@@ -72,9 +72,27 @@
 	<insert id="write" parameterType="RboardVo">
 		<![CDATA[
 			insert into rboard
-			values		(seq_rboard_no.nextval, #{userNo}, #{title}, #{content}, 0, sysdate, seq_group_no.nextval, 1, 0);
+			values		(seq_rboard_no.nextval, #{userNo}, #{title}, #{content}, 0, sysdate, seq_group_no.nextval, 1, 0)
 		]]>
 	</insert>
+	
+	
+	<insert id="reply" parameterType="RboardVo">
+		<![CDATA[
+			insert into rboard
+			values		(seq_rboard_no.nextval, #{userNo}, #{title}, #{content}, 0, sysdate, #{groupNo}, #{orderNo}+1, #{depth}+1)
+		]]>
+	</insert>
+	
+	
+	<update id="arrange" parameterType="RboardVo">
+		<![CDATA[
+			update			rboard
+			set 			order_no = order_no +1
+			where			group_no = #{groupNo}
+			and 			order_no > #{orderNo}	
+		]]>
+	</update>
 	
 	
 </mapper>

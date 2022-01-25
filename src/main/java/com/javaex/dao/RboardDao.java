@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.javaex.vo.BoardVo;
 import com.javaex.vo.RboardVo;
 
 @Repository
@@ -44,5 +43,15 @@ public class RboardDao {
 	public void write(RboardVo vo) {
 		sqlSession.insert("rboard.write", vo);
 	}
-
+	
+	// 댓글달기
+	public void reply(RboardVo vo) {
+		sqlSession.insert("rboard.reply", vo);
+	}
+	
+	// 댓글 순서조정
+	public void arrange(RboardVo vo) {
+		sqlSession.update("rboard.arrange", vo);
+	}
+	
 }

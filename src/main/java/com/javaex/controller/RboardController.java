@@ -88,5 +88,24 @@ public class RboardController {
 	}
 	
 	
+	// 글쓰기
+	@RequestMapping("/write")
+	public String write(@ModelAttribute RboardVo vo) {
+		System.out.println("rboardController/write()");
+		
+		rboardService.write(vo);
+		
+		return "redirect:/rboard/list";
+	}
+	
+	// 댓글달기
+	@RequestMapping("/reply")
+	public String reply(@ModelAttribute RboardVo vo) {
+		System.out.println("rboardController/reply()");
+		
+		rboardService.reply(vo);
+	
+		return "redirect:/rboard/list";
+	}
 	
 }

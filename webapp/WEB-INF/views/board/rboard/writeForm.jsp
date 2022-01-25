@@ -40,23 +40,50 @@
 	
 				<div id="board">
 					<div id="writeForm">
-						<form action="${pageContext.request.contextPath}/board/write" method="get">
-							<!-- 제목 -->
-							<div class="form-group">
-								<label class="form-text" for="txt-title">제목</label>
-								<input type="text" id="txt-title" name="title" value="" placeholder="제목을 입력해 주세요">
-							</div>
-						
-							<!-- 내용 -->
-							<div class="form-group">
-								<textarea id="txt-content" name="content"></textarea>
-							</div>
+					<c:choose>
+						<c:when test="${param.groupNo eq null}">
+							<form action="${pageContext.request.contextPath}/rboard/write" method="get">
+								<!-- 제목 -->
+								<div class="form-group">
+									<label class="form-text" for="txt-title">제목</label>
+									<input type="text" id="txt-title" name="title" value="" placeholder="제목을 입력해 주세요">
+								</div>
 							
-							<a id="btn_cancel" href="${pageContext.request.contextPath}/board/list">취소</a>
-							<input type="hidden" name="userNo" value="${authUser.no}">
-							<button id="btn_add" type="submit" >등록</button>
+								<!-- 내용 -->
+								<div class="form-group">
+									<textarea id="txt-content" name="content"></textarea>
+								</div>
+								
+								<a id="btn_cancel" href="${pageContext.request.contextPath}/rboard/list">취소</a>
+								<input type="hidden" name="userNo" value="${authUser.no}">
+								<button id="btn_add" type="submit" >등록</button>
+								
+							</form>
+						</c:when>
+						<c:otherwise>
+							<form action="${pageContext.request.contextPath}/rboard/reply" method="get">
+								<!-- 제목 -->
+								<div class="form-group">
+									<label class="form-text" for="txt-title">제목</label>
+									<input type="text" id="txt-title" name="title" value="" placeholder="제목을 입력해 주세요">
+								</div>
 							
-						</form>
+								<!-- 내용 -->
+								<div class="form-group">
+									<textarea id="txt-content" name="content"></textarea>
+								</div>
+								
+								<a id="btn_cancel" href="${pageContext.request.contextPath}/rboard/list">취소</a>
+								<input type="hidden" name="userNo" value="${authUser.no}">
+								<button id="btn_add" type="submit" >등록</button>
+								
+								<input type="hidden" name="orderNo" value="${param.orderNo}">
+								<input type="hidden" name="groupNo" value="${param.groupNo}">
+								<input type="hidden" name="depth" value="${param.depth}">
+							</form>
+						</c:otherwise>
+					</c:choose>
+							
 						<!-- //form -->
 					</div>
 					<!-- //writeForm -->

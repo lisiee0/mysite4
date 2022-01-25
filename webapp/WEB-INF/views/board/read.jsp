@@ -71,8 +71,9 @@
 									${post.content}
 								</span>
 							</div>
-							
-							<a id="btn_modify" href="${pageContext.request.contextPath}/board/modifyForm?no=${post.no}">수정</a>
+							<c:if test="${post.userNo eq authUser.no}">
+								<a id="btn_modify" href="${pageContext.request.contextPath}/board/modifyForm?no=${post.no}">수정</a>
+							</c:if>
 							<a id="btn_modify" href="${pageContext.request.contextPath}/board/list">목록</a>
 							
 						</form>
