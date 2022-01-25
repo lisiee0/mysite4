@@ -64,7 +64,7 @@
 										<td>${vo.no}</td>
 										<td class="text-left">
 										<a href="${pageContext.request.contextPath}/rboard/read?no=${vo.no}">
-											<c:forEach begin="1" end="${vo.depth}">&nbsp;</c:forEach>${vo.title}</a></td>
+											<c:forEach begin="1" end="${vo.depth}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>${vo.title}</a></td>
 										<td>${vo.userName}</td>
 										<td>${vo.hit}</td>
 										<td>${vo.regDate}</td>
