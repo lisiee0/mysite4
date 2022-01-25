@@ -14,6 +14,7 @@ public class BoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
 	// 리스트 불러오기
 	public List<BoardVo> getList() {
 		return sqlSession.selectList("board.getList");
