@@ -62,7 +62,9 @@
 								<c:forEach items="${rList}" var="vo">
 									<tr>
 										<td>${vo.no}</td>
-										<td class="text-left"><a href="${pageContext.request.contextPath}/rboard/read?no=${vo.no}">${vo.title}</a></td>
+										<td class="text-left">
+										<a href="${pageContext.request.contextPath}/rboard/read?no=${vo.no}">
+											<c:forEach begin="1" end="${vo.depth}">&nbsp;</c:forEach>${vo.title}</a></td>
 										<td>${vo.userName}</td>
 										<td>${vo.hit}</td>
 										<td>${vo.regDate}</td>
