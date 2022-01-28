@@ -123,14 +123,16 @@
 			// contentType : "application/json",
 			data : guestbookVo,
 
-			// dataType : "json",
+			dataType : "json",
 			success : function(guestbookVo){
 				/*성공시 처리해야될 코드 작성*/
 				console.log(guestbookVo);
+				render(guestbookVo, "up");
 				
-				for(var i= 0; i<gList.length; i++) {
-					render(gList[i]); // 방명록리스트 그리기
-				}
+				// 입력 데이터 초기화
+				$("#input-uname").val("");
+				$("#input-pass").val("");
+				$("[name='content']").val("");
 				
 			},
 			error : function(XHR, status, error) {
@@ -156,7 +158,7 @@
 				console.log(gList);
 				
 				for(var i= 0; i<gList.length; i++) {
-					render(gList[i]); // 방명록리스트 그리기
+					render(gList[i], "down"); // 방명록리스트 그리기
 				}
 				
 			},
@@ -167,7 +169,7 @@
 	};
 
 	// 리스트 그리기
-	function render(vo) {
+	function render(vo, updown) {
 		
 		var str= '';
 		str += ' <table class="guestRead"> ';
@@ -188,7 +190,16 @@
 		str += ' 	</tr> ';
 		str += ' </table> ';
 		
-		$("#listArea").append(str);
+		if(updown=='down') {
+			$("#listArea").append(str);
+		}
+		else if(updown=='up'){
+			$("#listArea").prepend(str);	
+		}
+		else {
+			console.log("error");
+		}
+		
 	};
 	
 </script>
