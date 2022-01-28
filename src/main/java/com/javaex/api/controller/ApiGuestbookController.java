@@ -35,15 +35,12 @@ public class ApiGuestbookController {
 		return guestbookService.getList();
 	}
 	
+	@ResponseBody
 	@RequestMapping("/add")
-	public void add(@ModelAttribute GuestbookVo vo) {
+	public GuestbookVo add(@ModelAttribute GuestbookVo vo) {
 		System.out.println("apiController/add()");
-		
-		System.out.println(vo);
-		
-		// 저장하고 저장된값 리턴
-		
-		GuestbookVo guest= guestbookService.addresult(vo);
-		System.out.println(guest);
+
+		// 방명록 작성 & 작성한 글 가져오기
+		return guestbookService.addresult(vo);
 	}
 }
