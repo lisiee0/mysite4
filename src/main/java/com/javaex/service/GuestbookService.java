@@ -33,4 +33,11 @@ public class GuestbookService {
 	public void delete(int no) {
 		gd.guestDelete(no);	
 	}
+	
+	
+	// ajax 게시판에서 사용
+	public GuestbookVo addresult(GuestbookVo vo) {	
+		gd.addSelectKey(vo); // 방명록 작성 & no값 가져오기
+		return gd.getGuest(vo.getNo()); // no값 이용해서 작성한글 가져오기
+	}	
 }

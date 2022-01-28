@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,7 +36,14 @@ public class ApiGuestbookController {
 	}
 	
 	@RequestMapping("/add")
-	public void add() {
+	public void add(@ModelAttribute GuestbookVo vo) {
+		System.out.println("apiController/add()");
 		
+		System.out.println(vo);
+		
+		// 저장하고 저장된값 리턴
+		
+		GuestbookVo guest= guestbookService.addresult(vo);
+		System.out.println(guest);
 	}
 }

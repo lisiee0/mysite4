@@ -115,11 +115,30 @@
 		};
 		
 		console.log(guestbookVo);
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath}/api/guest/add",		
+			type : "post",
+			// contentType : "application/json",
+			data : guestbookVo,
+
+			// dataType : "json",
+			success : function(result){
+				/*성공시 처리해야될 코드 작성*/
+				
+				for(var i= 0; i<gList.length; i++) {
+					render(gList[i]); // 방명록리스트 그리기
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 	});
 	
-	
-	
-	
+
 	// 리스트 출력
 	function fetchList() {
 
