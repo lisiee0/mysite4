@@ -124,8 +124,9 @@
 			data : guestbookVo,
 
 			// dataType : "json",
-			success : function(result){
+			success : function(guestbookVo){
 				/*성공시 처리해야될 코드 작성*/
+				console.log(guestbookVo);
 				
 				for(var i= 0; i<gList.length; i++) {
 					render(gList[i]); // 방명록리스트 그리기
