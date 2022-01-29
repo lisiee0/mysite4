@@ -18,8 +18,10 @@ public class BoardService {
 		return bd.getList();
 	}
 	
-	public void read(int no) {
-		bd.read(no);
+	public BoardVo read(int no) {
+		bd.getPost(no); // 특정글 선택
+		bd.read(no); // 조회수 +1
+		return bd.getPost(no);
 	}
 	
 	public BoardVo post(int no) {

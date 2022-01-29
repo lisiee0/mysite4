@@ -24,9 +24,8 @@ public class BoardController {
 	@RequestMapping("/list")
 	public String list(Model model) {
 		System.out.println("boardController/list()");
-		List<BoardVo> bList= boardService.list();
 		
-		model.addAttribute("bList", bList);
+		model.addAttribute("bList", boardService.list());
 		return "/board/list";
 	}
 	
@@ -35,11 +34,8 @@ public class BoardController {
 	@RequestMapping("/read")
 	public String read(@RequestParam("no") int no, Model model) {
 		System.out.println("boardController/read()");
-		
-		BoardVo post= boardService.post(no); // no번 게시글 선택
-		boardService.read(no); // 조회수 +1
-		model.addAttribute("post", post);
-		
+
+		model.addAttribute("post", boardService.read(no));
 		return "/board/read";
 	}
 	
@@ -49,9 +45,7 @@ public class BoardController {
 	public String modifyForm(@RequestParam("no") int no, Model model) {
 		System.out.println("boardController/modifyForm()");
 
-		BoardVo post= boardService.post(no);
-		model.addAttribute("post", post);
-		
+		model.addAttribute("post", boardService.post(no));		
 		return "/board/modifyForm";
 	}
 	
@@ -62,7 +56,6 @@ public class BoardController {
 		System.out.println("boardController/modify()");
 		
 		boardService.modify(vo);
-	
 		return "redirect:/board/list";
 	}
 	
@@ -73,7 +66,6 @@ public class BoardController {
 		System.out.println("boardController/delete()");
 		
 		boardService.delete(no);
-		
 		return "redirect:/board/list";
 	}
 	
@@ -93,7 +85,6 @@ public class BoardController {
 		System.out.println("boardController/write()");
 		
 		boardService.write(vo);
-		
 		return "redirect:/board/list";
 	}
 	
