@@ -30,14 +30,14 @@ public class RboardController {
 	
 	
 	// 게시글 읽기
-		@RequestMapping("/read")
-		public String read(@RequestParam("no") int no, Model model) {
-			System.out.println("rboardController/read()");
-			
-			model.addAttribute("post", rboardService.post(no));
-			
-			return "/board/rboard/read";
-		}
+	@RequestMapping("/read")
+	public String read(@RequestParam("no") int no, Model model) {
+		System.out.println("rboardController/read()");
+		
+		model.addAttribute("post", rboardService.post(no));
+		
+		return "/board/rboard/read";
+	}
 		
 	
 	// 게시글 수정폼
