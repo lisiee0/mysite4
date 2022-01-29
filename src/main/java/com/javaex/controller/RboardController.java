@@ -34,7 +34,7 @@ public class RboardController {
 	public String read(@RequestParam("no") int no, Model model) {
 		System.out.println("rboardController/read()");
 		
-		model.addAttribute("post", rboardService.post(no));
+		model.addAttribute("rpost", rboardService.post(no));
 		
 		return "/board/rboard/read";
 	}

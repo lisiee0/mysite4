@@ -44,40 +44,40 @@
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
-								<span class="form-value">${post.userName}</span>
+								<span class="form-value">${rpost.userName}</span>
 							</div>
 							
 							<!-- 조회수 -->
 							<div class="form-group">
 								<span class="form-text">조회수</span>
-								<span class="form-value">${post.hit}</span>
+								<span class="form-value">${rpost.hit}</span>
 							</div>
 							
 							<!-- 작성일 -->
 							<div class="form-group">
 								<span class="form-text">작성일</span>
-								<span class="form-value">${post.regDate}</span>
+								<span class="form-value">${rpost.regDate}</span>
 							</div>
 							
 							<!-- 제목 -->
 							<div class="form-group">
 								<span class="form-text">제 목</span>
-								<span class="form-value">${post.title}</span>
+								<span class="form-value">${rpost.title}</span>
 							</div>
 						
 							<!-- 내용 -->
 							<div id="txt-content">
 								<span class="form-value" >
-									${post.content}
+									${rpost.content}
 								</span>
 							</div>
 							
 							<c:if test="${authUser ne null}">
-								<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/writeForm?groupNo=${post.groupNo}&orderNo=${post.orderNo}&depth=${post.depth}">댓글</a>
+								<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/writeForm?groupNo=${rpost.groupNo}&orderNo=${rpost.orderNo}&depth=${rpost.depth}">댓글</a>
 							</c:if>
 							
 							<c:if test="${post.userNo eq authUser.no}">
-								<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/modifyForm?no=${post.no}">수정</a>
+								<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/modifyForm?no=${rpost.no}">수정</a>
 							</c:if>
 							
 							<a id="btn_modify" href="${pageContext.request.contextPath}/rboard/list">목록</a>
