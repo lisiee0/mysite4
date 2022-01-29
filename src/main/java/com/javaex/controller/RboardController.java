@@ -1,7 +1,5 @@
 package com.javaex.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +22,8 @@ public class RboardController {
 	@RequestMapping("/list")
 	public String list(Model model) {
 		System.out.println("rboardController/list()");
-		
-		List<RboardVo> rList= rboardService.list();
-		model.addAttribute("rList", rList);
+
+		model.addAttribute("rList", rboardService.list());
 		
 		return "/board/rboard/list";
 	}
@@ -37,9 +34,7 @@ public class RboardController {
 		public String read(@RequestParam("no") int no, Model model) {
 			System.out.println("rboardController/read()");
 			
-			RboardVo post= rboardService.post(no); // no번 게시글 선택
-			rboardService.read(no); // 조회수 +1
-			model.addAttribute("post", post);
+			model.addAttribute("post", rboardService.post(no));
 			
 			return "/board/rboard/read";
 		}
@@ -50,8 +45,7 @@ public class RboardController {
 	public String modifyForm(@RequestParam("no") int no, Model model) {
 		System.out.println("rboardController/modifyForm()");
 
-		RboardVo post= rboardService.post(no);
-		model.addAttribute("post", post);
+		model.addAttribute("post", rboardService.post(no));
 		
 		return "/board/rboard/modifyForm";
 	}

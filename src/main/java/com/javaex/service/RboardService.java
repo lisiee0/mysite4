@@ -18,8 +18,10 @@ public class RboardService {
 		return rd.getList();
 	}
 	
-	public void read(int no) {
+	public RboardVo read(int no) {
+		rd.getPost(no);
 		rd.read(no);
+		return rd.getPost(no);
 	}
 	
 	public RboardVo post(int no) {
