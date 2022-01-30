@@ -74,7 +74,7 @@ select      r.no,
             depth
 from        users u, rboard r
 where       u.no= r.user_no
-order by    groupNo desc, orderNo asc;
+order by    groupNo desc, orderNo asc, depth desc;
 
 
 
