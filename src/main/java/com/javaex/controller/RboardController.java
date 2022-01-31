@@ -100,6 +100,5 @@ public class RboardController {
 		rboardService.reply(vo);
 	
 		return "redirect:/rboard/list";
-	}
-	
+	}	
 }
