@@ -88,7 +88,7 @@
 	<update id="arrange" parameterType="RboardVo">
 		<![CDATA[
 			update			rboard
-			set 			order_no = order_no +1
+			set 			order_no = order_no +3
 			where			group_no = #{groupNo}
 			and 			order_no > #{orderNo}	
 		]]>
