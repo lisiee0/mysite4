@@ -141,7 +141,9 @@
 		});
 	});
 	
-
+	// 삭제버튼 눌렀을때
+	
+	
 	// 리스트 출력
 	function fetchList() {
 
@@ -183,7 +185,7 @@
 		str += ' 		<td>'+vo.no+'</td> ';
 		str += ' 		<td>'+vo.name+'</td> ';
 		str += ' 		<td>'+vo.regDate+'</td> ';
-		str += ' 		<td><a href="">[삭제]</a></td> ';
+		str += ' 		<td><button type="button">[삭제]</button></td> ';
 		str += ' 	</tr> ';
 		str += ' 	<tr> ';
 		str += ' 		<td colspan=4 class="text-left">'+vo.content+'</td> ';
