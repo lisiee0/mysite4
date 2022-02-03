@@ -142,8 +142,14 @@
 	});
 	
 	// 삭제버튼 눌렀을때
-	$(".delbtn").on("click", function() {
-		console.log("delbtn click");
+	$("#listArea").on("click", ".delbtn", function() {
+		var $this= $(this);
+		
+		console.log($this);
+		
+		// 회색바탕
+		// 팝업창 만들기
+		
 	});
 	
 	// 리스트 출력
@@ -203,7 +209,6 @@
 		else {
 			console.log("updown error");
 		}
-		
 	};
 	
 </script>
