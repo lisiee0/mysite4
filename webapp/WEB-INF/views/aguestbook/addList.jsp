@@ -64,7 +64,7 @@
 								<td colspan="4"><textarea name="content" cols="72" rows="5"></textarea></td>
 							</tr>
 							<tr class="button-area">
-								<td colspan="4" class="text-center"><button id="add" type="submit">등록</button></td>
+								<td colspan="4" class="text-center"><button id="add2" type="submit">등록</button></td>
 							</tr>
 						</tbody>
 
@@ -129,7 +129,9 @@
 		// 리스트 출력
 		fetchList();
 	});
-
+	
+	
+	// 파라미터 방식
 	// '등록'버튼 클릭될때
 	$("#add").on("click", function() {
 		console.log("add button click");
@@ -166,6 +168,50 @@
 				$("#input-pass").val("");
 				$("[name='content']").val("");
 
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+	
+	// json 방식 요청
+	// '등록'버튼 클릭될때
+	$("#add2").on("click", function() {
+		console.log("add button click(json)");
+
+		// 데이터 수집
+		var name = $("#input-uname").val();
+		var password = $("#input-pass").val();
+		var content = $("[name='content']").val();
+
+		// 객체 만들기
+		var guestbookVo = {
+			name : name,
+			password : password,
+			content : content
+		};
+
+		console.log(guestbookVo);
+		
+		$.ajax({
+
+			url : "${pageContext.request.contextPath}/api/guest/add2",
+			type : "post",
+			contentType : "application/json", //보낼때 json으로 보냄
+			data : JSON.stringify(guestbookVo), // 자바스크립트 객체 -> json형식으로 변경 
+
+			dataType : "json",
+			success : function(guestbookVo) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(guestbookVo);
+				render(guestbookVo, "up");
+
+				// 입력 데이터 초기화
+				$("#input-uname").val("");
+				$("#input-pass").val("");
+				$("[name='content']").val("");
+				
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -225,15 +271,12 @@
 					$("#delModal").modal('hide');
 					alert("비밀번호를 확인하세요.");
 				}
-				// 화면에서 변경되는 부분 반영
-				
-				
+
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
 			}
-		});
-		
+		});	
 	});
 
 	// 리스트 출력

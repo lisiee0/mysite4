@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -57,5 +58,15 @@ public class ApiGuestbookController {
 		String result= guestbookService.delGuest(vo);
 		
 		return result;
+	}
+	
+	
+	// 방명록 작성 (json 방식)
+	@ResponseBody
+	@RequestMapping("/add2")
+	public GuestbookVo add2(@RequestBody GuestbookVo vo) {
+		System.out.println("apiController/add2()");
+
+		return guestbookService.addresult(vo);	
 	}
 }
