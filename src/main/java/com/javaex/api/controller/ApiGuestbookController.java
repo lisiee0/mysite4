@@ -34,6 +34,7 @@ public class ApiGuestbookController {
 		
 		return guestbookService.getList();
 	}
+
 	
 	@ResponseBody
 	@RequestMapping("/add")
@@ -42,5 +43,19 @@ public class ApiGuestbookController {
 
 		// 방명록 작성 & 작성한 글 가져오기
 		return guestbookService.addresult(vo);
+	}
+
+	
+	@ResponseBody
+	@RequestMapping("/delete")
+	public String delete(@ModelAttribute GuestbookVo vo) {
+		System.out.println("apiController/delete()");
+		
+		System.out.println(vo);
+		
+		// "success" "fail"
+		String result= guestbookService.delGuest(vo);
+		
+		return result;
 	}
 }

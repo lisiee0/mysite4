@@ -52,10 +52,10 @@ public class GuestbookController {
 	public String delete(@ModelAttribute GuestbookVo vo) {
 		System.out.println("GuestController/delete()");
 		
-		GuestbookVo post= guestbookService.getGuest(vo.getNo());
+		GuestbookVo post= guestbookService.getGuest(vo);
 		if(post.getPassword().equals(vo.getPassword())) { // 비밀번호 일치
 			System.out.println("password correct");
-			guestbookService.delete(post.getNo());
+			guestbookService.delete(post);
 		}
 		else { // 비밀번호 불일치
 			System.out.println("password incorrect");

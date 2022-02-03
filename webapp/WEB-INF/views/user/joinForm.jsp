@@ -6,9 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
 
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -103,5 +107,25 @@
 	<!-- //wrap -->
 
 </body>
+
+<script>
+	$("#btn-submit").on("click", function() {
+		console.log("회원가입 버튼 클릭");
+		
+		var id= $("#input-uid").val();
+		var pw= $("#input-pass").val();
+		
+		
+		if(id=="") {
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		if(pw=="") {
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}
+		return true;
+	});
+</script>
 
 </html>

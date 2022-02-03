@@ -35,9 +35,14 @@ public class GuestbookDao {
 		sqlSession.delete("guest.guestDelete", no);
 	}
 	
+	/*********************************************************************/
 	// ajax 게시판에서 사용
 	// 방명록작성 & no값 가져오기
 	public void addSelectKey(GuestbookVo vo) {
 		sqlSession.insert("guest.addSelect", vo);
+	}
+	
+	public int delGuest(GuestbookVo vo) {
+		return sqlSession.delete("guest.delGuest", vo);
 	}
 }

@@ -192,6 +192,16 @@
 	$("#modalDelbtn").on("click", function() {
 		console.log("click delbtn in modal");
 		
+		// 데이터 수집
+		var no= $("#modalNo").val();
+		var password= $("#modalPassword").val();
+		
+		var delInfoVo= {
+				no: no,
+				password: password
+		};
+		
+		console.log(delInfoVo);
 		// ajax 요청 no, password
 		
 		$.ajax({
@@ -199,15 +209,25 @@
 			url : "${pageContext.request.contextPath}/api/guest/delete",
 			type : "post",
 			// contentType : "application/json",
-			// data : {name: "홍길동"},
+			data : delInfoVo,
 
 			dataType : "json",
-			success : function(gList) {
+			success : function(state) {
+				console.log(state);
 				/*성공시 처리해야될 코드 작성*/
-				
+				if(state==="success") {
+					// 해당 테이블(html) 삭제
+					$("#t"+no).remove();
+					// 모달 닫기
+					$("#delModal").modal('hide');
+				}
+				else {
+					$("#delModal").modal('hide');
+					alert("비밀번호를 확인하세요.");
+				}
 				// 화면에서 변경되는 부분 반영
-				// 모달 닫기
-				// 해당 테이블(html) 삭제
+				
+				
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -246,7 +266,7 @@
 	function render(vo, updown) {
 
 		var str = '';
-		str += ' <table class="guestRead"> ';
+		str += ' <table id="t' + vo.no + '" class="guestRead"> ';
 		str += ' 	<colgroup> ';
 		str += ' 		<col style="width: 10%;"> ';
 		str += ' 		<col style="width: 40%;"> ';
