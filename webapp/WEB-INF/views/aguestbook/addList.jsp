@@ -197,7 +197,7 @@
 			$("#listArea").prepend(str);	
 		}
 		else {
-			console.log("error");
+			console.log("updown error");
 		}
 		
 	};
