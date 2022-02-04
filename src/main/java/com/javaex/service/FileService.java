@@ -41,11 +41,11 @@ public class FileService {
 		
 		// 파일 저장(업로드)
 		try {
-			byte[] fileDate= file.getBytes();
+			byte[] fileData= file.getBytes();
 			OutputStream out= new FileOutputStream(filePath);
 			BufferedOutputStream bout= new BufferedOutputStream(out);
 			
-			bout.write(fileDate);
+			bout.write(fileData);
 			bout.close();
 		}
 		catch (IOException e) {
