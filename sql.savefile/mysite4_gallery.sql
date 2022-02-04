@@ -39,3 +39,18 @@ commit;
 
 select * from gallery;
 
+
+select      g.no,
+            user_no,
+            u.name,
+            content,
+            file_path,
+            org_name,
+            save_name,
+            file_size
+from        users u, gallery g
+where       u.no= g.user_no;
+
+
+
+select * from users;

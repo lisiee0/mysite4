@@ -4,6 +4,23 @@
 
 <mapper namespace="gallery">
 	
+	<select id="getList" resultType="GalleryVo">
+		<![CDATA[
+			select      g.no no,
+            			user_no userNo,
+           				u.name userName,
+            			content,
+            			file_path filePath,
+            			org_name orgName,
+            			save_name saveName,
+            			file_size fileSize
+			from        users u, gallery g
+			where       u.no= g.user_no
+			order by 	no desc
+		]]>
+	</select>
+	
+	
 	<insert id="upload" parameterType="GalleryVo">
 		<![CDATA[
 			insert into 	gallery

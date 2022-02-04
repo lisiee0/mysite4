@@ -56,19 +56,18 @@
 
 
 					<ul id="viewArea">
-
 						<!-- 이미지반복영역 -->
-						<li>
-							<div class="view">
-								<img class="imgItem" src="">
-								<div class="imgWriter">
-									작성자: <strong>유재석</strong>
+						<c:forEach items="${gList}" var="vo">
+							<li>
+								<div class="view">
+									<img class="imgItem" src="${pageContext.request.contextPath }/upload/${vo.saveName}">
+									<div class="imgWriter">
+										작성자: <strong>${vo.userName}</strong>
+									</div>
 								</div>
-							</div>
-						</li>
+							</li>
+						</c:forEach>
 						<!-- 이미지반복영역 -->
-
-
 					</ul>
 				</div>
 				<!-- //list -->
@@ -148,7 +147,9 @@
 				<form method="" action="">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
+						<c:if test="${authUser.no eq a}">
+							<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
+						</c:if>
 					</div>
 
 
@@ -172,13 +173,16 @@
 		// 업로드창 띄우기
 		$("#addModal").modal('show');
 	});
+
 	
-	// 업로드창의 '등록' 버튼 클릭할때
-	$("#btnUpload").on("click", function() {
-		console.log("upload click");
+	// 이미지 클릭할때
+	$("#viewArea").on("click", ".imgItem", function() {
+		var $this= $(this);
+		
+		console.log("img click");
+		
+		$("#viewModal").modal('show');
 	});
-	
-	
 	
 </script>
 

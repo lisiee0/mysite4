@@ -18,10 +18,12 @@ public class GalleryController {
 	@Autowired
 	private GalleryService galleryService;
 	
+	
 	@RequestMapping("/list")
-	public String list() {
+	public String list(Model model) {
 		System.out.println("galleryController/list()");
 		
+		model.addAttribute("gList", galleryService.getList());
 		return "/gallery/list";
 	}
 	
