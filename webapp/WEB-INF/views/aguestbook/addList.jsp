@@ -105,7 +105,7 @@
 
 					비밀번호 : 
 					<input id="modalPassword" type="password" name="password" value=""> 
-					<input id="modalNo" type="text" name="no" value="">
+					<input id="modalNo" type="hidden" name="no" value="">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>

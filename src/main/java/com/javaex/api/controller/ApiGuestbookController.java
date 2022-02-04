@@ -51,13 +51,9 @@ public class ApiGuestbookController {
 	@RequestMapping("/delete")
 	public String delete(@ModelAttribute GuestbookVo vo) {
 		System.out.println("apiController/delete()");
-		
-		System.out.println(vo);
-		
+
 		// "success" "fail"
-		String result= guestbookService.delGuest(vo);
-		
-		return result;
+		return guestbookService.delGuest(vo);
 	}
 	
 	
