@@ -33,6 +33,8 @@ create table gallery(
 insert into gallery
 values(seq_gallery_no.nextval, 2, '이효리 사진입니다.', '파일경로', '오리지널파일명', '저장파일명', 10);
 
+delete from gallery
+where no=2;
 
 commit;
 
