@@ -15,13 +15,13 @@
 	<div id="wrap">
 
 		<!-- 해더 네비 -->
-		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 		<!-- //해더 네비 -->
 
 
 		<div id="container" class="clearfix">
 			<!-- 게시판 aside -->
-			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"></c:import>
+			<c:import url="/WEB-INF/views/include/aside_gallery.jsp"></c:import>
 			<!-- //게시판 aside -->
 			
 			
@@ -60,7 +60,7 @@
 		<!-- //container  -->
 
 
-		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		<!-- //footer -->
 
 	</div>

@@ -15,5 +15,11 @@ public class FileController {
 		return "/fileupload/form";
 	}
 	
-
+	
+	@RequestMapping("/result")
+	public String result() {
+		System.out.println("fileController/result()");
+		
+		return "/fileupload/result";
+	}
 }
