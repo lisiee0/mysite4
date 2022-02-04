@@ -7,12 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet"
-	type="text/css"
->
-<link href="${pageContext.request.contextPath }/assets/css/gallery.css" rel="stylesheet"
-	type="text/css"
->
+<link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/gallery.css" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -21,12 +17,12 @@
 	<div id="wrap">
 
 		<!-- 해더 네비 -->
-		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 		<!-- //해더 네비 -->
 
 		<div id="container" class="clearfix">
 			<!-- 게시판 aside -->
-			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"></c:import>
+			<c:import url="/WEB-INF/views/include/aside_gallery.jsp"></c:import>
 			<!-- //게시판 aside -->
 
 			<div id="content">
@@ -68,7 +64,7 @@
 
 
 		<!-- 푸터 -->
-		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		<!-- //푸터 -->
 	</div>
 	<!-- //wrap -->
