@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.GalleryService;
@@ -19,6 +20,7 @@ public class GalleryController {
 	private GalleryService galleryService;
 	
 	
+	// 리스트 불러오기
 	@RequestMapping("/list")
 	public String list(Model model) {
 		System.out.println("galleryController/list()");
@@ -27,6 +29,7 @@ public class GalleryController {
 		return "/gallery/list";
 	}
 	
+	// 이미지 업로드
 	@RequestMapping("/upload")
 	public String upload(@RequestParam("file") MultipartFile file, 
 						 @ModelAttribute GalleryVo vo,
@@ -35,6 +38,17 @@ public class GalleryController {
 	
 		galleryService.restore(file, vo);
 		return "redirect:/gallery/list";
+	}
+	
+	
+	// 이미지 보기
+	@ResponseBody
+	@RequestMapping("/view")
+	public GalleryVo view(@RequestParam("no") int no) {
+		System.out.println("galleryController/view()");
+		
+		return galleryService.view(no);
+		
 	}
 
 }

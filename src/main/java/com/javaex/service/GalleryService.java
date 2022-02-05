@@ -56,4 +56,10 @@ public class GalleryService {
 		// db에 저장
 		gd.upload(gvo);
 	}
+	
+	
+	
+	public GalleryVo view(int no) {
+		return gd.getImage(no);
+	}
 }

@@ -51,7 +51,22 @@ select      g.no,
             save_name,
             file_size
 from        users u, gallery g
-where       u.no= g.user_no;
+where       u.no= g.user_no
+order by    no desc;
+
+
+select      g.no,
+            user_no,
+            u.name,
+            content,
+            file_path,
+            org_name,
+            save_name,
+            file_size
+from        users u, gallery g
+where       u.no= g.user_no
+and         g.no= 3;
+
 
 
 

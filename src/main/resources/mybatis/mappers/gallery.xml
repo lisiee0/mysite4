@@ -21,11 +21,31 @@
 	</select>
 	
 	
+	<select id="getImage" parameterType="GalleryVo" resultType="GalleryVo">
+		<![CDATA[
+			select      g.no no,
+            			user_no userNo,
+           				u.name userName,
+            			content,
+            			file_path filePath,
+            			org_name orgName,
+            			save_name saveName,
+            			file_size fileSize
+			from        users u, gallery g
+			where       u.no= g.user_no
+			and 		g.no= #{userNo}
+		]]>
+	</select>
+	
+	
 	<insert id="upload" parameterType="GalleryVo">
 		<![CDATA[
 			insert into 	gallery
 			values			(seq_gallery_no.nextval, #{userNo}, #{content}, #{filePath}, #{orgName}, #{saveName}, #{fileSize})
 		]]>
 	</insert>
+	
+	
+	
 	
 </mapper>

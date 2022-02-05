@@ -25,4 +25,10 @@ public class GalleryDao {
 	public void upload(GalleryVo vo) {
 		sqlSession.insert("gallery.upload", vo);
 	}
+	
+	
+	// 클릭한 이미지 불러오기
+	public GalleryVo getImage(int no) {
+		return sqlSession.selectOne("gallery.getImage", no);
+	}
 }

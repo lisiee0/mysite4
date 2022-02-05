@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/gallery.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/gallery.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 </head>
 
@@ -49,9 +48,9 @@
 				<div id="list">
 
 					<c:if test="${authUser ne null}">
-						<button id="btnImgUpload">이미지올리기</button>
+						<button id="btnImgUpload" data-userno="${authUser.no}">이미지올리기</button>
 					</c:if>
-					
+
 					<div class="clear"></div>
 
 
@@ -60,7 +59,7 @@
 						<c:forEach items="${gList}" var="vo">
 							<li>
 								<div class="view">
-									<img class="imgItem" src="${pageContext.request.contextPath }/upload/${vo.saveName}">
+									<img class="imgItem" data-no="${vo.no}" src="${pageContext.request.contextPath}/upload/${vo.saveName}">
 									<div class="imgWriter">
 										작성자: <strong>${vo.userName}</strong>
 									</div>
@@ -96,7 +95,7 @@
 					<h4 class="modal-title">이미지등록</h4>
 				</div>
 
-				<form method="post" action="${pageContext.request.contextPath }/gallery/upload" enctype="multipart/form-data">
+				<form method="post" action="${pageContext.request.contextPath}/gallery/upload" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
 							<label class="form-text">글작성</label> <input id="addModalContent" type="text" name="content" value="">
@@ -108,8 +107,7 @@
 					<div class="modal-footer">
 						<button type="submit" class="btn" id="btnUpload">등록</button>
 					</div>
-					<input type="hidden" name="userNo" value="${authUser.no}">
-					<input type="hidden" name="userName" value="${authUser.name}">
+					<input type="hidden" name="userNo" value="${authUser.no}"> <input type="hidden" name="userName" value="${authUser.name}">
 				</form>
 
 
@@ -144,12 +142,11 @@
 					</div>
 
 				</div>
-				<form method="" action="">
+				<form method="post" action="${pageContext.request.contextPath}/gallery/delete">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<c:if test="${authUser.no eq a}">
-							<button type="button" class="btn btn-danger" id="btnDel">삭제</button>
-						</c:if>
+						<button type="button" class="btn btn-danger" id="delBtn">삭제</button>
+						<input type="hidden" name="modalNo" val="">
 					</div>
 
 
@@ -168,21 +165,60 @@
 
 <script type="text/javascript">
 
+	// 로딩되기 전에 요청
+	$(document).ready(function() {
+		// authUser.no 저장
+		var authUserNo= $("#btnImgUpload").data("userno");
+	});
+	
 	// '이미지올리기' 버튼 클릭할때
 	$("#btnImgUpload").on("click", function() {
 		// 업로드창 띄우기
 		$("#addModal").modal('show');
 	});
 
-	
 	// 이미지 클릭할때
 	$("#viewArea").on("click", ".imgItem", function() {
-		var $this= $(this);
-		
-		console.log("img click");
-		
-		$("#viewModal").modal('show');
+		var no = $(this).data("no");
+		getImage(no);
 	});
+
+	
+	// 이미지 불러오기
+	function getImage(no) {
+		var url = '${pageContext.request.contextPath}/upload/';
+
+		$.ajax({
+
+			url : "${pageContext.request.contextPath}/gallery/view",
+			type : "post",
+			// contentType : "application/json",
+			data : {no : no},
+
+			dataType : "json",
+			success : function(vo) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(vo);
+				if (vo.userNo==authUserNo) {
+					$("#delBtn").show();
+				}
+				else {
+					$("#delBtn").hide();
+				}
+
+				// 이미지보기 모달창 띄우기
+				$("#viewModal").modal('show');
+
+				$("#viewModelImg").attr("src", url + vo.saveName);
+				$("#viewModelContent").html(vo.content);
+				$("[name='modalNo']").val(vo.no);
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	};
+
 	
 </script>
 
