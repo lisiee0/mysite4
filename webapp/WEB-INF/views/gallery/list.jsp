@@ -145,7 +145,7 @@
 				<form method="post" action="${pageContext.request.contextPath}/gallery/delete">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-danger" id="delBtn">삭제</button>
+						<button type="submit" class="btn btn-danger" id="delBtn">삭제</button>
 						<input type="hidden" name="modalNo" val="">
 					</div>
 
@@ -220,6 +220,8 @@
 		});
 	};
 	
+	
+	// 이미지 삭제
 	function deleteImg(no) {
 		$.ajax({
 			url: "${pageContext.request.contextPath}/gallery/delete",
@@ -229,7 +231,7 @@
 			
 			dataType: "json",
 			success : function(result){
-				if(result=="success"){
+				if (result=="success") {
 					$("#img"+no).remove();				
 					$("#viewModal").modal('hide');
 				}
@@ -242,12 +244,8 @@
 			}
 		});
 	};
-
 	
 </script>
-
-
-
 
 </html>
 
