@@ -61,4 +61,16 @@ public class GalleryService {
 	public GalleryVo view(int no) {
 		return gd.getImage(no);
 	}
+	
+	
+	public String delete(int no) {
+		int count= gd.delete(no);
+		
+		if(count>0) {
+			return "success";
+		}
+		else {
+			return "fail";
+		}
+	}
 }

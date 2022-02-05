@@ -33,5 +33,7 @@ public class GalleryDao {
 	}
 	
 	// 삭제
-	
+	public int delete(int no) {
+		return sqlSession.delete("gallery.delete", no);
+	}
 }

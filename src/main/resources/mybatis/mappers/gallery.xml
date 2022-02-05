@@ -47,5 +47,13 @@
 	
 	
 	
+	<delete id="delete" parameterType="Galleryvo">
+		<![CDATA[
+			delete from 	gallery
+			where	  		no= #{no}
+		]]>
+	</delete>
+	
+	
 	
 </mapper>

@@ -57,7 +57,7 @@
 					<ul id="viewArea">
 						<!-- 이미지반복영역 -->
 						<c:forEach items="${gList}" var="vo">
-							<li>
+							<li id="img${vo.no}">
 								<div class="view">
 									<img class="imgItem" data-no="${vo.no}" src="${pageContext.request.contextPath}/upload/${vo.saveName}">
 									<div class="imgWriter">
@@ -164,12 +164,6 @@
 
 
 <script type="text/javascript">
-
-	// 로딩되기 전에 요청
-	$(document).ready(function() {
-		// authUser.no 저장
-		var authUserNo= $("#btnImgUpload").data("userno");
-	});
 	
 	// '이미지올리기' 버튼 클릭할때
 	$("#btnImgUpload").on("click", function() {
@@ -180,14 +174,21 @@
 	// 이미지 클릭할때
 	$("#viewArea").on("click", ".imgItem", function() {
 		var no = $(this).data("no");
-		getImage(no);
+		getImg(no);
 	});
 
+	// '삭제' 버튼 클릭할때
+	$("#delBtn").on("click", function() {
+		var no= $("#modalNo").val();
+		deleteImg(no);
+	});
+	
+	
 	
 	// 이미지 불러오기
-	function getImage(no) {
+	function getImg(no) {
 		var url = '${pageContext.request.contextPath}/upload/';
-
+		var authUserNo= $("#btnImgUpload").data("userno");
 		$.ajax({
 
 			url : "${pageContext.request.contextPath}/gallery/view",
@@ -212,6 +213,29 @@
 				$("#viewModelImg").attr("src", url + vo.saveName);
 				$("#viewModelContent").html(vo.content);
 				$("[name='modalNo']").val(vo.no);
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	};
+	
+	function deleteImg(no) {
+		$.ajax({
+			url: "${pageContext.request.contextPath}/gallery/delete",
+			type : "post",
+			//contentType: "application/json",
+			data : {no: no},
+			
+			dataType: "json",
+			success : function(result){
+				if(result=="success"){
+					$("#img"+no).remove();				
+					$("#viewModal").modal('hide');
+				}
+				else {
+					$("#viewModal").modal('hide');
+				}
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
