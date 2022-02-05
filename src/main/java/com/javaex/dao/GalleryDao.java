@@ -31,4 +31,7 @@ public class GalleryDao {
 	public GalleryVo getImage(int no) {
 		return sqlSession.selectOne("gallery.getImage", no);
 	}
+	
+	// 삭제
+	
 }

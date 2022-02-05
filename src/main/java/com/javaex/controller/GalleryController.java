@@ -48,7 +48,10 @@ public class GalleryController {
 		System.out.println("galleryController/view()");
 		
 		return galleryService.view(no);
-		
 	}
+	
+	
+	// 이미지 삭제
+	
 
 }

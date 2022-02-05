@@ -58,7 +58,6 @@ public class GalleryService {
 	}
 	
 	
-	
 	public GalleryVo view(int no) {
 		return gd.getImage(no);
 	}
