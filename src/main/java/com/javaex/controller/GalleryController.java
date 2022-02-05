@@ -54,7 +54,7 @@ public class GalleryController {
 	// 이미지 삭제
 	@ResponseBody
 	@RequestMapping("/delete")
-	public String delete(@RequestParam("modalNo") int no) {
+	public String delete(@RequestParam("no") int no) {
 		System.out.println("galleryController/delete()");
 		
 		return galleryService.delete(no);

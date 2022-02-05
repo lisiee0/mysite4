@@ -142,16 +142,13 @@
 					</div>
 
 				</div>
-				<form method="post" action="${pageContext.request.contextPath}/gallery/delete">
+				<form method="" action="">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<button type="submit" class="btn btn-danger" id="delBtn">삭제</button>
+						<button type="button" class="btn btn-danger" id="delBtn">삭제</button>
 						<input type="hidden" name="modalNo" val="">
 					</div>
-
-
 				</form>
-
 			</div>
 			<!-- /.modal-content -->
 		</div>
@@ -179,7 +176,9 @@
 
 	// '삭제' 버튼 클릭할때
 	$("#delBtn").on("click", function() {
-		var no= $("#modalNo").val();
+		var no= $("[name='modalNo']").val();
+		console.log(no);
+		console.log("delbtn click")
 		deleteImg(no);
 	});
 	
@@ -187,8 +186,10 @@
 	
 	// 이미지 불러오기
 	function getImg(no) {
+		
 		var url = '${pageContext.request.contextPath}/upload/';
 		var authUserNo= $("#btnImgUpload").data("userno");
+		
 		$.ajax({
 
 			url : "${pageContext.request.contextPath}/gallery/view",
@@ -213,6 +214,7 @@
 				$("#viewModelImg").attr("src", url + vo.saveName);
 				$("#viewModelContent").html(vo.content);
 				$("[name='modalNo']").val(vo.no);
+				console.log($("[name='modalNo']").val()); // check
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -223,16 +225,19 @@
 	
 	// 이미지 삭제
 	function deleteImg(no) {
+		console.log("delteImg func")
 		$.ajax({
 			url: "${pageContext.request.contextPath}/gallery/delete",
 			type : "post",
 			//contentType: "application/json",
-			data : {no: no},
+			data : {no : no},
 			
 			dataType: "json",
-			success : function(result){
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(result);
 				if (result=="success") {
-					$("#img"+no).remove();				
+					$("#img"+no).remove();
 					$("#viewModal").modal('hide');
 				}
 				else {
