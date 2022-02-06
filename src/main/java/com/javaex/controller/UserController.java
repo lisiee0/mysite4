@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -132,5 +134,15 @@ public class UserController {
 		model.addAttribute("authUser", authUser); // 세션 덮어쓰기
 		
 		return "redirect:/";
-	}	
+	}
+	
+	
+	// 아이디 중복체크
+	@ResponseBody
+	@RequestMapping("/checkDup")
+	public String checkDup(@RequestParam("id") String id) {
+		System.out.println("UserController/checkDup()");
+		System.out.println(id);
+		return userService.checkDup(id);
+	}
 }

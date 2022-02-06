@@ -50,7 +50,7 @@
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
 								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="">중복체크</button>
+								<button type="button" id="chkBtn">중복체크</button>
 							</div>
 	
 							<!-- 비밀번호 -->
@@ -109,12 +109,13 @@
 </body>
 
 <script>
+	
+	// 회원가입양식 (id, pw) 공백일 경우
 	$("#btn-submit").on("click", function() {
 		console.log("회원가입 버튼 클릭");
 		
 		var id= $("#input-uid").val();
 		var pw= $("#input-pass").val();
-		
 		
 		if(id=="") {
 			alert("아이디를 입력해주세요.");
@@ -126,6 +127,49 @@
 		}
 		return true;
 	});
+	
+	
+	// '중복체크' 버튼 클릭할때
+	$("#chkBtn").on("click", function() {
+		console.log("chkBtn click")
+		var id= $("#input-uid").val();
+		console.log(id);
+		
+		checkDup(id);
+	});
+	
+	
+	// 중복체크
+	function checkDup(id) {
+		console.log("func");
+		$.ajax({
+
+			url : "${pageContext.request.contextPath}/user/checkDup",
+			type : "post",
+			// contentType : "application/json",
+			data : {id : id},
+
+			dataType : "json",
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(result);
+				if (result=="inuse") {
+					alert("이미 사용중인 아이디입니다.");
+					console.log(result);
+				}
+				else {
+					alert("사용 가능한 아이디입니다.");	
+					console.log(result);
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}
+	
 </script>
+
+
 
 </html>

@@ -23,4 +23,15 @@ public class UserService {
 	public void modify(UserVo vo) {
 		ud.userUpdate(vo);
 	}
+	
+	public String checkDup(String id) {
+		int count= ud.checkDup(id);
+		
+		if (count>0) {
+			return "inuse";
+		}
+		else {
+			return "available";
+		}
+	}
 }

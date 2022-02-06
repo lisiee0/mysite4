@@ -34,8 +34,17 @@
 			where		no= #{no}
 		]]>
 	</update>
-
-
+	
+	
+	<!-- id 중복체크 -->
+	<select id="checkDup" parameterType="UserVo" resultType="UserVo">
+		<![CDATA[
+			select 		no,
+        				id
+			from   		users
+			where   	id= #{id}
+		]]>
+	</select>
 
 
 </mapper>

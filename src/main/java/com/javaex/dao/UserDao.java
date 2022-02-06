@@ -29,4 +29,10 @@ public class UserDao {
 	public void userUpdate(UserVo vo) {
 		sqlSession.update("user.userUpdate", vo);
 	}
+	
+	
+	// 아이디 중복체크
+	public int checkDup(String id) {
+		return sqlSession.selectOne("user.checkDup", id);
+	}
 }
