@@ -24,8 +24,8 @@ public class UserService {
 		ud.userUpdate(vo);
 	}
 	
-	public String checkDup(String id) {
-		int count= ud.checkDup(id);
+	public String checkDup(UserVo vo) {
+		int count= ud.checkDup(vo);
 		
 		if (count>0) {
 			return "inuse";

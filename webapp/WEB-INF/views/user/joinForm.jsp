@@ -131,23 +131,21 @@
 	
 	// '중복체크' 버튼 클릭할때
 	$("#chkBtn").on("click", function() {
-		console.log("chkBtn click")
-		var id= $("#input-uid").val();
-		console.log(id);
+		var chkId= $("#input-uid").val();
 		
-		checkDup(id);
+		checkDup(chkId);
 	});
 	
 	
 	// 중복체크
-	function checkDup(id) {
-		console.log("func");
+	function checkDup(chkId) {
+
 		$.ajax({
 
 			url : "${pageContext.request.contextPath}/user/checkDup",
 			type : "post",
 			// contentType : "application/json",
-			data : {id : id},
+			data : {id : chkId},
 
 			dataType : "json",
 			success : function(result) {
@@ -155,11 +153,9 @@
 				console.log(result);
 				if (result=="inuse") {
 					alert("이미 사용중인 아이디입니다.");
-					console.log(result);
 				}
 				else {
 					alert("사용 가능한 아이디입니다.");	
-					console.log(result);
 				}
 			},
 			error : function(XHR, status, error) {

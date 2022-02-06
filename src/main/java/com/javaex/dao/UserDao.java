@@ -32,7 +32,7 @@ public class UserDao {
 	
 	
 	// 아이디 중복체크
-	public int checkDup(String id) {
-		return sqlSession.selectOne("user.checkDup", id);
+	public int checkDup(UserVo vo) {
+		return sqlSession.selectOne("user.checkDup", vo);
 	}
 }

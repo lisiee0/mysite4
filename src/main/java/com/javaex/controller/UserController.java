@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -140,9 +139,9 @@ public class UserController {
 	// 아이디 중복체크
 	@ResponseBody
 	@RequestMapping("/checkDup")
-	public String checkDup(@RequestParam("id") String id) {
+	public String checkDup(@ModelAttribute UserVo vo) {
 		System.out.println("UserController/checkDup()");
-		System.out.println(id);
-		return userService.checkDup(id);
+
+		return userService.checkDup(vo);
 	}
 }

@@ -37,10 +37,9 @@
 	
 	
 	<!-- id 중복체크 -->
-	<select id="checkDup" parameterType="UserVo" resultType="UserVo">
+	<select id="checkDup" parameterType="UserVo" resultType="int">
 		<![CDATA[
-			select 		no,
-        				id
+			select 		count(id)
 			from   		users
 			where   	id= #{id}
 		]]>
