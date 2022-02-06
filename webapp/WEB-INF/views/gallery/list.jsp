@@ -168,17 +168,17 @@
 		$("#addModal").modal('show');
 	});
 
+	
 	// 이미지 클릭할때
 	$("#viewArea").on("click", ".imgItem", function() {
 		var no = $(this).data("no");
 		getImg(no);
 	});
 
+	
 	// '삭제' 버튼 클릭할때
 	$("#delBtn").on("click", function() {
 		var no= $("[name='modalNo']").val();
-		console.log(no);
-		console.log("delbtn click")
 		deleteImg(no);
 	});
 	
@@ -214,7 +214,6 @@
 				$("#viewModelImg").attr("src", url + vo.saveName);
 				$("#viewModelContent").html(vo.content);
 				$("[name='modalNo']").val(vo.no);
-				console.log($("[name='modalNo']").val()); // check
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
