@@ -12,17 +12,21 @@ public class UserService {
 	@Autowired
 	private UserDao ud;
 	
+	
 	public UserVo getUser(UserVo vo) {
 		return ud.getUser(vo);
 	}
+	
 	
 	public void join(UserVo vo) {
 		ud.userInsert(vo);
 	}
 	
+	
 	public void modify(UserVo vo) {
 		ud.userUpdate(vo);
 	}
+	
 	
 	public String checkDup(UserVo vo) {
 		int count= ud.checkDup(vo);
