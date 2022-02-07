@@ -65,7 +65,7 @@ public class BoardService {
 		
 		// 페이징 리스트 영역
 		// 현재 페이지 처리 (3항 연산자)
-		crtPage= (crtPage>0) ? crtPage : (crtPage= 1);
+		int crtPageNo= (crtPage>0) ? crtPage : (crtPage= 1);
 		
 		int listCnt= 10; // 한 페이지당 글 개수
 		int startRnum= (crtPage-1)*listCnt +1; // 시작글 번호
@@ -106,7 +106,7 @@ public class BoardService {
 		pMap.put("endBtnNo", endBtnNo);
 		pMap.put("next", next);
 		pMap.put("bList", bd.getList2(startRnum, endRnum));
-		
+		pMap.put("crtPageNo", crtPageNo);
 		
 		System.out.println("----------------------------------------");
 		System.out.println(pMap);

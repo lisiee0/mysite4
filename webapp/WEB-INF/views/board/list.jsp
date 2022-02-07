@@ -76,13 +76,15 @@
 			
 						<div id="paging">
 							<ul>
-								<c:if test="${pMap.prev==true}">
+								<c:if test="${pMap.prev eq true}">
 									<li><a href="${pageContext.request.contextPath}/board/list2?crtPage=${pMap.startBtnNo-1}">◀</a></li>
 								</c:if>
 								
 								<!-- 현재페이지 볼드처리 -->
 								<c:forEach begin="${pMap.startBtnNo}" end="${pMap.endBtnNo}" step="1" var="page">
-									<li class="active"><a href="${pageContext.request.contextPath}/board/list2?crtPage=${page}">${page}</a></li>
+									<li class= ${pMap.crtPageNo eq page ? "active" : ""}>
+										<a href="${pageContext.request.contextPath}/board/list2?crtPage=${page}">${page}</a>
+									</li>
 								</c:forEach>
 								
 								<c:if test="${pMap.next==true}">
