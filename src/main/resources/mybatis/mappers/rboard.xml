@@ -30,7 +30,7 @@
             				title,
             				content,
             				hit,
-            				to_char(reg_date, 'YYYY-MM-DD HH:MI:SS') regDate,
+            				to_char(reg_date, 'YYYY-MM-DD HH24:MI:SS') regDate,
             				u.name userName,
             				group_no groupNo,
             				order_no orderNo,
