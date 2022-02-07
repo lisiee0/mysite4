@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,18 @@ public class BoardController {
 		System.out.println("boardController/list()");
 		
 		model.addAttribute("bList", boardService.list());
+		return "/board/list";
+	}
+	
+	
+	// 게시글 리스트 & 페이징
+	@RequestMapping("/list2")
+	public String list2(@RequestParam("crtPage") int crtPage, Model model) {
+		System.out.println("boardController/list2()");
+		System.out.println(crtPage);
+		
+		// 해당페이지(crtPage)의 리스트 10개
+		model.addAttribute("bList", boardService.list2(crtPage));
 		return "/board/list";
 	}
 	

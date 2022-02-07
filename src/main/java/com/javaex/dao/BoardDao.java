@@ -1,12 +1,15 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.BoardVo;
+import com.javaex.vo.UserVo;
 
 @Repository
 public class BoardDao {
@@ -43,6 +46,21 @@ public class BoardDao {
 	// 글작성
 	public void write(BoardVo vo) {
 		sqlSession.insert("board.write", vo);
+	}
+	
+	
+	// 리스트 가져오기 & 페이징
+	public List<BoardVo> getList2(int startRnum, int endRnum) {
+		System.out.println("boardService.list2()");
+		System.out.println(startRnum+","+endRnum);
+		
+		Map<String, Integer> map= new HashMap<String, Integer>();
+		map.put("startRnum", startRnum);
+		map.put("endRnum", endRnum);
+
+		return sqlSession.selectList("board.getList2", map);
+		
+		
 	}
 }
 
