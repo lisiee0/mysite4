@@ -58,5 +58,10 @@ public class BoardDao {
 
 		return sqlSession.selectList("board.getList2", map);
 	}
+	
+	// 전체 글갯수 가져오기
+	public int count() {
+		return sqlSession.selectOne("board.count");
+	}
 }
 

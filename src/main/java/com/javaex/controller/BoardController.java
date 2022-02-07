@@ -36,7 +36,8 @@ public class BoardController {
 		System.out.println("boardController/list2()");
 		
 		// 해당페이지(crtPage)의 리스트 10개
-		model.addAttribute("bList", boardService.list2(crtPage));
+		model.addAttribute("pMap", boardService.list2(crtPage));
+		
 		return "/board/list";
 	}
 	

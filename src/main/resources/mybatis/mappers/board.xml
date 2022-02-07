@@ -106,4 +106,14 @@
 		]]>
 	</select>
 	
+	
+	<!-- 전체 글개수 카운트 -->
+	<select id="count" resultType="int">
+		<![CDATA[
+			select  	count(*)
+			from    	board b, users u
+			where   	b.user_no= u.no
+		]]>
+	</select>
+	
 </mapper>
