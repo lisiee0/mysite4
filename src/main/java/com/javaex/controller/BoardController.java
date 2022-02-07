@@ -32,7 +32,7 @@ public class BoardController {
 	
 	// 게시글 리스트 & 페이징
 	@RequestMapping("/list2")
-	public String list2(@RequestParam("crtPage") int crtPage, Model model) {
+	public String list2(@RequestParam(value="crtPage", required= false, defaultValue= "1") int crtPage, Model model) {
 		System.out.println("boardController/list2()");
 		
 		// 해당페이지(crtPage)의 리스트 10개

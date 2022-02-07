@@ -61,7 +61,8 @@ public class BoardService {
 	
 	// 리스트 & 페이징
 	public List<BoardVo> list2(int crtPage) {
-		System.out.println("list2");
+		// 현재 페이지 처리 (3항 연산자)
+		crtPage= (crtPage>0) ? crtPage : (crtPage= 1);
 		
 		int listCnt= 10; // 한 페이지당 글 개수
 		int startRnum= (crtPage-1)*listCnt +1; // 시작글 번호

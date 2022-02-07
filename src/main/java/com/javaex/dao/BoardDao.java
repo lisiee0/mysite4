@@ -51,8 +51,6 @@ public class BoardDao {
 	
 	// 리스트 가져오기 & 페이징
 	public List<BoardVo> getList2(int startRnum, int endRnum) {
-		System.out.println("boardService.list2()");
-		System.out.println(startRnum+","+endRnum);
 		
 		Map<String, Integer> map= new HashMap<String, Integer>();
 		map.put("startRnum", startRnum);
