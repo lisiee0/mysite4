@@ -59,8 +59,6 @@ public class BoardDao {
 		map.put("endRnum", endRnum);
 
 		return sqlSession.selectList("board.getList2", map);
-		
-		
 	}
 }
 

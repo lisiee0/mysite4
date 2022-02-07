@@ -63,16 +63,9 @@ public class BoardService {
 	public List<BoardVo> list2(int crtPage) {
 		System.out.println("list2");
 		
-		// 리스트 가져오기
-		
-		// 페이지당 글 개수
-		int listCnt= 10;
-		
-		// 시작글 번호
-		int startRnum= (crtPage-1)*listCnt +1;
-		
-		// 끝글 번호
-		int endRnum= (startRnum+listCnt) -1;
+		int listCnt= 10; // 한 페이지당 글 개수
+		int startRnum= (crtPage-1)*listCnt +1; // 시작글 번호
+		int endRnum= (startRnum+listCnt) -1; // 마지막글 번호
 		
 		return bd.getList2(startRnum, endRnum);
 	}

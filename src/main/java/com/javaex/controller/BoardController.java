@@ -34,7 +34,6 @@ public class BoardController {
 	@RequestMapping("/list2")
 	public String list2(@RequestParam("crtPage") int crtPage, Model model) {
 		System.out.println("boardController/list2()");
-		System.out.println(crtPage);
 		
 		// 해당페이지(crtPage)의 리스트 10개
 		model.addAttribute("bList", boardService.list2(crtPage));
