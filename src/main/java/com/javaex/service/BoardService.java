@@ -37,7 +37,17 @@ public class BoardService {
 	}
 	
 	public void write(BoardVo vo) {
+		
+		/*
+		// 페이징 데이터 추가
+		for(int i= 1; i<=123; i++) {
+			vo.setTitle(i+"번째 글제목입니다.");
+			vo.setContent(i+"번째 글내용입니다.");
+			
+			bd.write(vo);
+		}
+		*/
+		
 		bd.write(vo);
 	}
-
 }
