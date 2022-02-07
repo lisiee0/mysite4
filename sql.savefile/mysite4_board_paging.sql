@@ -27,4 +27,6 @@ from (select  rownum rn,
 where   rn between 1 and 10;
 
 
-
+select  count(*)
+from    board b, users u
+where   b.user_no= u.no;
