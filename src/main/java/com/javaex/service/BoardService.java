@@ -45,17 +45,6 @@ public class BoardService {
 	
 	
 	public void write(BoardVo vo) {
-		
-		/*
-		// 페이징 데이터 추가
-		for(int i= 1; i<=123; i++) {
-			vo.setTitle(i+"번째 글제목입니다.");
-			vo.setContent(i+"번째 글내용입니다.");
-			
-			bd.write(vo);
-		}
-		*/
-		
 		bd.write(vo);
 	}
 	
@@ -64,7 +53,7 @@ public class BoardService {
 	public Map<String, Object> list2(int crtPage) {
 		
 		// 페이징 리스트 영역
-		// 현재 페이지 처리 (3항 연산자)
+		// 현재 페이지 처리 (3항 연산자) crtPage 1이상을 제외하고 1로 처리
 		int crtPageNo= (crtPage>0) ? crtPage : (crtPage= 1);
 		
 		int listCnt= 10; // 한 페이지당 글 개수
@@ -73,6 +62,7 @@ public class BoardService {
 		
 		
 		// 페이징 버튼영역
+		// 데이터 총개수
 		int totalCnt= bd.count();
 		
 		// 페이지당 버튼 갯수
@@ -107,13 +97,7 @@ public class BoardService {
 		pMap.put("next", next);
 		pMap.put("bList", bd.getList2(startRnum, endRnum));
 		pMap.put("crtPageNo", crtPageNo);
-		
-		System.out.println("----------------------------------------");
-		System.out.println(pMap);
-		System.out.println("----------------------------------------");
-		
-		return pMap;
-		
-		
+
+		return pMap;	
 	}
 }
