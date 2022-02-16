@@ -64,6 +64,5 @@ public class ApiGuestbookController {
 		System.out.println("apiController/add2()");
 
 		return guestbookService.addresult(vo);	
-	}
-	
+	}	
 }
